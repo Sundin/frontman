@@ -17,4 +17,4 @@ Log out and log back in again.
 
     cd reverse-proxy
     docker build -t reverse-proxy .
-    docker run -d -p 80:80 --add-host host.docker.internal:host-gateway reverse-proxy
+    docker run -d -p 80:80 --add-host host.docker.internal:host-gateway --name reverse-proxy reverse-proxy
