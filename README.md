@@ -13,8 +13,9 @@ Install Docker: https://docs.docker.com/engine/install/ubuntu/
 
     sudo usermod -a -G docker ubuntu
 
+Install Docker Compose.
+
 Log out and log back in again.
 
     cd reverse-proxy
-    docker build -t reverse-proxy .
-    docker run -d -p 80:80 --add-host host.docker.internal:host-gateway --name reverse-proxy reverse-proxy
+    docker-compose up --build -d

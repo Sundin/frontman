@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  reverse-proxy:
+    image: reverse-proxy
+    build: .
+    ports:
+      - 80:80
+    restart: unless-stopped
+    extra_hosts: 
+        - "host.docker.internal:host-gateway"
