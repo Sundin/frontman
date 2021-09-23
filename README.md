@@ -19,3 +19,25 @@ Log out and log back in again.
 
     cd reverse-proxy
     docker-compose up --build -d
+
+## HTTPS
+In order to encrypt your services using HTTPS, you need to generate a certificate using LetsEncrypt.
+
+### Pre-requisites
+
+Install Certbot.
+
+Put the contents from [this file](https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf) into `/etc/letsencrypt/options-ssl-nginx.conf`.
+
+### Generate certificates
+
+Stop the reverse proxy: `docker-compose stop`
+
+Generate certificate for your domain (replace domain name): `sudo certbot certonly -d ctd.zapto.org`
+- Choose option 1: Spin up a temporary webserver (standalone).
+
+Restart the reverse proxy.
+
+The contents from `/etc/letsencrypt/` will be mounted into the Docker container.
+
+You need to repeat this process every 90 days.
