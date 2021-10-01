@@ -1,13 +1,59 @@
-# nginx-reverse-proxy
+# Frontman
 
-    docker build -t reverse-proxy .
-    docker run -p 8081:80 --add-host host.docker.internal:host-gateway reverse-proxy
+Frontman is an NGINX reverse proxy that redirects traffic to one of many locally running Docker containers based on the base URL of the incoming requests.
 
-Forward to other applications running on localhost with `host.docker.internal` according to [this answer](https://stackoverflow.com/a/24326540/948942).
+This way you can host many services on the same server.
 
-## Set up on EC2
+## Preconditions
+You need to have a domain name for each service you wish to host. You can obtain a free domain name pointing to your server using for example [DuckDNS](https://www.duckdns.org/) or [no-ip](https://www.noip.com/).
+
+## Getting started
+### Configuration
+
+Create a file called `servers.json`. 
+
+It should contain an array with json objects, each containing the following keys:
+
+- `server_name`: The domain name for requests that should be redirected to a certain port.
+- `upstream_port`: The port to redirect traffic to. This is the port you should host your Docker service on.
+- `https`: Should be set to `true` or `false`.
+
+Example content:
+
+```
+[
+    {
+        "server_name": "domain1.org",
+        "upstream_port": "8080",
+        "https": true
+    },
+    {
+        "server_name": "another-domain.org",
+        "upstream_port": "8665",
+        "https": false
+    }
+]
+```
+
+When you have the configuration file in place, run `python3 script.py`. This will generate a `nginx.conf` file for you. 
+
+### Start the reverse proxy
+
+Start the reverse with the following command:
+
+    docker-compose up --build -d
+
+Remember to include the `--build` when you restart after making any changes to `nginx.conf`.
+
+### Stopping the reverse proxy
+
+    docker-compose stop
+
+## Getting started on AWS EC2
 
 Launch a new Ubuntu image and set up security groups etc.
+
+Assign a elastic (=static) IP to your instance.
 
 Install Docker: https://docs.docker.com/engine/install/ubuntu/
 
@@ -35,7 +81,7 @@ Put the contents from [this file](https://raw.githubusercontent.com/certbot/cert
 
 Stop the reverse proxy: `docker-compose stop`
 
-Generate certificate for your domain (replace domain name): `sudo certbot certonly -d ctd.zapto.org`
+Generate certificate for your domain (replace domain name): `sudo certbot certonly -d domain1.org`
 - Choose option 1: Spin up a temporary webserver (standalone).
 
 Restart the reverse proxy.
