@@ -13,7 +13,9 @@ Install Docker: https://docs.docker.com/engine/install/ubuntu/
 
     sudo usermod -a -G docker ubuntu
 
-Install Docker Compose.
+Install Docker Compose:
+
+    sudo apt install docker-compose
 
 Log out and log back in again.
 
@@ -25,7 +27,7 @@ In order to encrypt your services using HTTPS, you need to generate a certificat
 
 ### Pre-requisites
 
-Install Certbot.
+Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx).
 
 Put the contents from [this file](https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf) into `/etc/letsencrypt/options-ssl-nginx.conf`.
 
