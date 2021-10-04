@@ -7,6 +7,8 @@ This way you can host many services on the same server.
 ## Preconditions
 You need to have a domain name for each service you wish to host. You can obtain a free domain name pointing to your server using for example [DuckDNS](https://www.duckdns.org/) or [no-ip](https://www.noip.com/).
 
+You also need to have Docker, Docker Compose and Python 3 installed.
+
 ## Getting started
 ### Configuration
 
@@ -35,19 +37,16 @@ Example content:
 ]
 ```
 
-When you have the configuration file in place, run `python3 script.py`. This will generate a `nginx.conf` file for you. 
-
 ### Start the reverse proxy
 
-Start the reverse with the following command:
+Start frontman with the following command:
 
-    docker-compose up --build -d
+    make start
 
-Remember to include the `--build` when you restart after making any changes to `nginx.conf`.
-
+This will generate a `nginx.conf` file for you and start the reverse proxy. 
 ### Stopping the reverse proxy
 
-    docker-compose stop
+    make stop
 
 ## Getting started on AWS EC2
 
@@ -79,7 +78,7 @@ Put the contents from [this file](https://raw.githubusercontent.com/certbot/cert
 
 ### Generate certificates
 
-Stop the reverse proxy: `docker-compose stop`
+Stop the reverse proxy: `make stop`
 
 Generate certificate for your domain (replace domain name): `sudo certbot certonly -d domain1.org`
 - Choose option 1: Spin up a temporary webserver (standalone).
