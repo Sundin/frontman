@@ -7,7 +7,7 @@ This way you can host many services on the same server.
 ## Preconditions
 You need to have a domain name for each service you wish to host. You can obtain a free domain name pointing to your server using for example [DuckDNS](https://www.duckdns.org/) or [no-ip](https://www.noip.com/).
 
-You also need to have Docker, Docker Compose and Python 3 installed.
+You also need to have Docker, Docker Compose, Make and Python 3 installed.
 
 ## Getting started
 ### Configuration
