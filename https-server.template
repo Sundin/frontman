@@ -15,5 +15,8 @@
 
         location / {
             proxy_pass http://host.docker.internal:$_UPSTREAM_PORT_$/;
+
+	    # Include this line so that your target service will see the original matching URL, not the proxied URL
+            proxy_set_header Host $host;
         }
     }
