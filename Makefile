@@ -4,7 +4,7 @@ start:
 ifdef context
 	docker-compose --context $(context) up --build --detach 
 else
-	docket context ls
+	docker context ls
 	docker-compose up --build --detach
 endif
 
