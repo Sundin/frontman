@@ -4,6 +4,7 @@ start:
 ifdef context
 	docker-compose --context $(context) up --build --detach 
 else
+	docket context ls
 	docker-compose up --build --detach
 endif
 
@@ -11,5 +12,6 @@ stop:
 ifdef context
 	docker-compose --context $(context) stop
 else
+	docker-context ls
 	docker-compose stop
 endif
