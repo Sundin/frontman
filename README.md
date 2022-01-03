@@ -48,6 +48,14 @@ This will generate a `nginx.conf` file for you and start the reverse proxy.
 
     make stop
 
+### Start/Stop on remote host
+
+To start or stop frontman on a remote host using [docker context](https://docs.docker.com/engine/context/working-with-contexts/), you can provide the optional parameter `context`:
+
+    docker context create my-server --docker "host=ssh://user@$my-server-ip"
+    make context=my-server start
+    make context=my-server stop
+
 ## Getting started on AWS EC2
 
 Launch a new Ubuntu image and set up security groups etc.
