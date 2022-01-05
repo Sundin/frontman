@@ -25,6 +25,6 @@ with open("servers.json") as f:
     new_conf = nginx_conf.replace("$$$_SERVERS_$$$", all_servers)
     print(new_conf)
 
-    out_file = open("nginx.conf", "a")
+    out_file = open("nginx.conf", "x")
     out_file.write(new_conf)
     out_file.close()

@@ -11,4 +11,11 @@ services:
         - "host.docker.internal:host-gateway"
     volumes:
         - /etc/letsencrypt/:/etc/letsencrypt/
-
+  certbot:
+    image: certbot/certbot
+    ports:
+      - 80:80
+    volumes:
+      - /etc/letsencrypt/:/etc/letsencrypt/
+    profiles:
+      - tools

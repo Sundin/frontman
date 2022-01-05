@@ -6,7 +6,7 @@
         listen       443 ssl;
         ssl_certificate /etc/letsencrypt/live/$_SERVER_NAME_$/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/$_SERVER_NAME_$/privkey.pem;
-        include /etc/letsencrypt/options-ssl-nginx.conf;
+        include /etc/nginx/options-ssl-nginx.conf;
 
         # Redirect non-https traffic to https
         if ($scheme != "https") {
