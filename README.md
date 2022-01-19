@@ -88,3 +88,6 @@ Restart the reverse proxy.
 The contents from `/etc/letsencrypt/` will be mounted into the Docker container.
 
 You need to repeat this process every 90 days unless you set up a cronjob to do it for you.
+
+## How to contribute
+Feel free to open a pull request! All contributions, no matter how small, are more than welcome. Happy hacking!
