@@ -1,5 +1,7 @@
 # Frontman
 
+⚠️ ⚠️ ⚠️ **This repo has been permanently moved to [DeviesDevelopment/frontman](https://github.com/DeviesDevelopment/frontman) instead** ⚠️ ⚠️ ⚠️
+
 Frontman is an NGINX reverse proxy that redirects traffic to one of many locally running Docker containers based on the base URL of the incoming requests.
 
 This way you can host many services on the same server.
